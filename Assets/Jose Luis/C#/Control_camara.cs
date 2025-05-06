@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class Control_Camara : MonoBehaviour
 {
- Lupao
     [Header("Control de camara")]
-=======
-main
     [SerializeField] private Transform Seguimiento;
     [SerializeField] private float Distancia_Objetivo_x;
     [SerializeField] private float Distancia_Objetivo_y;
@@ -26,7 +23,7 @@ main
         }
 
         instancia = this;
-        DontDestroyOnLoad(gameObject); // Haz que esta c√°mara persista
+        DontDestroyOnLoad(gameObject); // Haz que esta c·mara persista
 
         if (Seguimiento == null)
         {
@@ -43,11 +40,11 @@ main
             if (jugador != null)
             {
                 Seguimiento = jugador.transform;
-                Debug.Log("Jugador encontrado y asignado a la c√°mara.");
+                Debug.Log("Jugador encontrado y asignado a la c·mara.");
             }
             else
             {
-                Debug.LogWarning("No se encontr√≥ el jugador.");
+                Debug.LogWarning("No se encontrÛ el jugador.");
             }
         }
     }
