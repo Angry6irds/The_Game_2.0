@@ -23,11 +23,11 @@ public class Control_Camara : MonoBehaviour
         }
 
         instancia = this;
-        DontDestroyOnLoad(gameObject); // Haz que esta cámara persista
+        DontDestroyOnLoad(gameObject); // Haz que esta camara persista
 
         if (Seguimiento == null)
         {
-            GameObject jugador = GameObject.Find("Player"); // Cambia esto si el jugador tiene otro nombre
+            GameObject jugador = GameObject.Find("Player");
             if (jugador != null)
             {
                 Seguimiento = jugador.transform;
@@ -40,7 +40,7 @@ public class Control_Camara : MonoBehaviour
             if (jugador != null)
             {
                 Seguimiento = jugador.transform;
-                Debug.Log("Jugador encontrado y asignado a la cámara.");
+                Debug.Log("Jugador encontrado y asignado a la camara.");
             }
             else
             {
@@ -59,7 +59,7 @@ public class Control_Camara : MonoBehaviour
 
         Nueva_Posicion.y = Seguimiento.position.y - Distancia_Objetivo_y;
         Nueva_Posicion.y = Seguimiento.position.y;
-        
+
         Nueva_Posicion.x = Seguimiento.position.x - (-Distancia_Objetivo_y - Distancia_Objetivo_z);
         Nueva_Posicion.y = Seguimiento.position.y - (-Distancia_Objetivo_x - Distancia_Objetivo_z);
         Nueva_Posicion.z = Seguimiento.position.z - (-Distancia_Objetivo_x - Distancia_Objetivo_y);
