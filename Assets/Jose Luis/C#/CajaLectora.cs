@@ -18,6 +18,12 @@ public class DepositBox : MonoBehaviour
     public JugadorDialogo jugadorDialogo;
     public List<DialogoConAutor> mensajesDeposito;
 
+    [Header("Diálogo del jugador después del video")]
+    public List<DialogoConAutor> mensajesDelJugador;
+
+    [Header("Cinemática de video")]
+    public CinematicaControl cinematicaControl;
+
     private bool esperandoDialogo = false;
 
     private void OnTriggerEnter(Collider other)
@@ -27,36 +33,34 @@ public class DepositBox : MonoBehaviour
             InventarioJugador inventario = other.GetComponent<InventarioJugador>();
             if (inventario != null && inventario.tieneCristal)
             {
-                // Marcar que está en proceso de diálogo
                 esperandoDialogo = true;
 
-                // Deposita el cristal desde el inventario
                 inventario.tieneCristal = false;
 
-                // Inicia los diálogos
-                StartCoroutine(IniciarDialogoDeposito());
+                // Inicia la cinemática del video y diálogos
+                StartCoroutine(EsperarCinematica());
 
-                Debug.Log("Cristal depositado. Iniciando diálogo.");
+                Debug.Log("Cristal depositado. Iniciando cinemática y diálogo.");
             }
         }
     }
 
-    private IEnumerator IniciarDialogoDeposito()
+    private IEnumerator EsperarCinematica()
     {
-        // Reproducir los diálogos al depositar
-        jugadorDialogo.ActivarDialogos(mensajesDeposito);
+        // Inicia la secuencia de video y diálogos
+        cinematicaControl.IniciarCinematica(mensajesDeposito, mensajesDelJugador);
 
-        // Esperar a que termine el panel de diálogo
-        while (jugadorDialogo.dialogoUI.panelDialogo.activeSelf)
+        // Esperar hasta que finalice la cinemática completa
+        while (!cinematicaControl.CinematicaTerminada)
         {
             yield return null;
         }
 
-        // Diálogo finalizado, permitir acceso
+        // Ahora sí marcar todo como terminado
         cristalDepositado = true;
         dialogoFinalizado = true;
         esperandoDialogo = false;
 
-        Debug.Log("Diálogo completado. La puerta ahora es accesible.");
+        Debug.Log("Cinemática completada. La puerta ahora es accesible.");
     }
 }

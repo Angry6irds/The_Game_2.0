@@ -13,4 +13,8 @@ public class JugadorDialogo : MonoBehaviour
             dialogoUI.MostrarDialogos(mensajes);
         }
     }
+    public bool EstaMostrandoDialogo
+    {
+        get { return dialogoUI.panelDialogo.activeSelf; }
+    }
 }

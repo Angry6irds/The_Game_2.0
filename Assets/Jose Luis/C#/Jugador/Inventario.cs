@@ -6,13 +6,15 @@ public class InventarioJugador : MonoBehaviour
 {
     public bool tieneCristal = false;
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("Presionaste E");
             Collider[] colliders = Physics.OverlapSphere(transform.position, 2f);
             foreach (Collider col in colliders)
             {
+                Debug.Log("Encontrado: " + col.name);
                 if (col.CompareTag("CristalBlanco"))
                 {
                     TieneCristal(col.gameObject);
