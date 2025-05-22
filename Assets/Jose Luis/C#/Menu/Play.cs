@@ -11,7 +11,7 @@ public class Play : MonoBehaviour
     }
     public void jugar()
     {
-        SceneManager.LoadScene("Nivel_1_fase_1");
+        SceneManager.LoadScene("Nivel_1_fase_1 Bake");
     }
     public void opciones()
     {
