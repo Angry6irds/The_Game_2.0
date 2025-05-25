@@ -9,9 +9,11 @@ public class PruebaSaltar : MonoBehaviour
 
     [Header("Habilidad desbloqueable")]
     public bool dobleSaltoHabilitado = false;
+    private Animator animador;
 
     void Start()
     {
+        animador = GetComponent<Animator>();
         if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
@@ -24,8 +26,13 @@ public class PruebaSaltar : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && saltosDisponibles > 0)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
-            rb.AddForce(Vector3.up * +fuerzaSalto, ForceMode.Impulse);
+            rb.AddForce(Vector3.up * fuerzaSalto, ForceMode.Impulse);
             saltosDisponibles--;
+
+            if (animador != null)
+            {
+                animador.SetTrigger("saltar");
+            }
         }
     }
       void OnCollisionEnter(Collision collision)

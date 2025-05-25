@@ -1,29 +1,46 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class Play : MonoBehaviour
 {
+    public TransicionEscena transicion; // Asignar el objeto con el PanelFade
+
     public void menu()
     {
-        SceneManager.LoadScene("Menu");
+        CargarEscenaConFade("Menu");
     }
+
     public void jugar()
     {
-        SceneManager.LoadScene("Nivel_1_fase_1");
+        CargarEscenaConFade("Video_intro");
     }
+
     public void opciones()
     {
-        SceneManager.LoadScene("Opciones");
+        CargarEscenaConFade("Opciones");
     }
+
     public void creditos()
     {
-        SceneManager.LoadScene("Creditos");
+        CargarEscenaConFade("Creditos");
     }
+
     public void salir()
     {
         Debug.Log("Estas saliendo del juego, vuelve pronto :D");
         Application.Quit();
+    }
+
+    private void CargarEscenaConFade(string nombreEscena)
+    {
+        if (transicion != null)
+        {
+            transicion.IniciarTransicion(nombreEscena);
+        }
+        else
+        {
+            Debug.LogWarning("Transición no asignada, cargando escena directamente.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(nombreEscena);
+        }
     }
 }
