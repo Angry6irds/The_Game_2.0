@@ -21,27 +21,57 @@ public class Player_Standar : MonoBehaviour
     [Header("Salto tradicional")]
     public float fuerzaSalto = 10f;
     private bool saltoSolicitado = false;
+    private CamaraMixta camaraControl;
     void Start()
     {
         animador = GetComponent<Animator>();
         velActual = velCaminata;
         controller = GetComponent<CharacterController>();
+        camaraControl = FindObjectOfType<CamaraMixta>();
+        Debug.Log("CharacterController activo: " + controller.enabled);
     }
 
     void Update()
     {
         if (!puedeMoverse) return;
 
-        // Entrada de movimiento
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
-        // Rotación y desplazamiento
-        transform.Rotate(0, horizontal * Time.deltaTime * Rotacion, 0);
-        transform.Translate(0, 0, vertical * Time.deltaTime * velActual);
+        Vector3 direccionMovimiento = Vector3.zero;
 
-        Vector3 movimiento = transform.forward * vertical * velActual;
+        bool esPrimeraPersona = camaraControl != null && camaraControl.EnPrimeraPersona;
 
+        if (esPrimeraPersona)
+        {
+            Vector3 adelante = Camera.main.transform.forward;
+            Vector3 derecha = Camera.main.transform.right;
+
+            adelante.y = 0f;
+            derecha.y = 0f;
+
+            adelante.Normalize();
+            derecha.Normalize();
+
+            direccionMovimiento = (adelante * vertical + derecha * horizontal).normalized;
+
+            // Haz que el personaje mire hacia donde apunta la cámara (opcional)
+            Vector3 direccionMirada = direccionMovimiento;
+            if (direccionMirada != Vector3.zero)
+                transform.forward = direccionMirada;
+        }
+        else
+        {
+            // Rotación clásica y movimiento en Z local
+            if (horizontal != 0)
+                transform.Rotate(0, horizontal * Time.deltaTime * Rotacion, 0);
+
+            direccionMovimiento = transform.forward * vertical;
+        }
+
+        Vector3 movimiento = direccionMovimiento * velActual;
+
+        // SALTO
         if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
         {
             saltoSolicitado = true;
@@ -50,11 +80,11 @@ public class Player_Standar : MonoBehaviour
         // Gravedad y Jetpack
         if (controller.isGrounded && impulsoJetpack <= 0f)
         {
-            velocidad.y = -gravedad * Time.deltaTime; // Fijar al suelo
+            velocidad.y = -gravedad * Time.deltaTime;
         }
         else
         {
-            velocidad.y += -gravedad * Time.deltaTime; // Caída o empuje adicional
+            velocidad.y += -gravedad * Time.deltaTime;
         }
 
         if (saltoSolicitado)
@@ -63,19 +93,15 @@ public class Player_Standar : MonoBehaviour
             saltoSolicitado = false;
         }
 
-        // Impulso del Jetpack
         velocidad.y += impulsoJetpack;
         impulsoJetpack = 0f;
 
-        // Movimiento total
-        Vector3 movimientoFinal = (movimiento + velocidad) * Time.deltaTime;
-        controller.Move(movimientoFinal);
+        Vector3 movimientoFinal = new Vector3(movimiento.x, velocidad.y, movimiento.z);
+        controller.Move(movimientoFinal * Time.deltaTime);
 
         // Animación
         float velocidadTotal = new Vector2(horizontal, vertical).magnitude;
         animador.SetFloat("velocidad", velocidadTotal);
-
-        Debug.Log("Velocidad para animación: " + velocidadTotal);
     }
 
 
