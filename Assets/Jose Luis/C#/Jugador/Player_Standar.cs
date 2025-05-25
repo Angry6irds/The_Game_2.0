@@ -17,6 +17,10 @@ public class Player_Standar : MonoBehaviour
     //[SerializeField] private Rigidbody rb;
     [Header("Control externo")]
     public bool puedeMoverse = true;
+    public float impulsoJetpack = 0f;
+    [Header("Salto tradicional")]
+    public float fuerzaSalto = 10f;
+    private bool saltoSolicitado = false;
     void Start()
     {
         animador = GetComponent<Animator>();
@@ -27,27 +31,50 @@ public class Player_Standar : MonoBehaviour
     void Update()
     {
         if (!puedeMoverse) return;
+
+        // Entrada de movimiento
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
 
+        // Rotación y desplazamiento
         transform.Rotate(0, horizontal * Time.deltaTime * Rotacion, 0);
         transform.Translate(0, 0, vertical * Time.deltaTime * velActual);
-        Vector3 movimiento = transform.forward * vertical * velActual * Time.deltaTime;
-        //rb.MovePosition(rb.position + movimiento);
 
-       if (controller.isGrounded)
+        Vector3 movimiento = transform.forward * vertical * velActual;
+
+        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
         {
-            velocidad.y = -gravedad * Time.deltaTime;
+            saltoSolicitado = true;
+        }
+
+        // Gravedad y Jetpack
+        if (controller.isGrounded && impulsoJetpack <= 0f)
+        {
+            velocidad.y = -gravedad * Time.deltaTime; // Fijar al suelo
         }
         else
         {
-            velocidad.y -= gravedad * Time.deltaTime;
+            velocidad.y += -gravedad * Time.deltaTime; // Caída o empuje adicional
         }
 
-        controller.Move((movimiento + velocidad) * Time.deltaTime);
+        if (saltoSolicitado)
+        {
+            velocidad.y = fuerzaSalto;
+            saltoSolicitado = false;
+        }
 
+        // Impulso del Jetpack
+        velocidad.y += impulsoJetpack;
+        impulsoJetpack = 0f;
+
+        // Movimiento total
+        Vector3 movimientoFinal = (movimiento + velocidad) * Time.deltaTime;
+        controller.Move(movimientoFinal);
+
+        // Animación
         float velocidadTotal = new Vector2(horizontal, vertical).magnitude;
         animador.SetFloat("velocidad", velocidadTotal);
+
         Debug.Log("Velocidad para animación: " + velocidadTotal);
     }
 

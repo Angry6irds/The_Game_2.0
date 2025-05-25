@@ -20,17 +20,33 @@ public class PasarEscena : MonoBehaviour
 
         if (!requiereCristal)
         {
+            TransicionEscena transicion = FindObjectOfType<TransicionEscena>();
+            if (transicion != null)
+            {
+                transicion.IniciarTransicion(nombreDeEscena);
+                return;
+            }
             // Escena libre, sin restricciones
             SceneManager.LoadScene(nombreDeEscena);
         }
         else if (cajaDeposito != null && cajaDeposito.cristalDepositado && cajaDeposito.dialogoFinalizado)
         {
-            // Escena con cristal correctamente depositado Y diálogo terminado
-            SceneManager.LoadScene(nombreDeEscena);
+            TransicionEscena transicion = FindObjectOfType<TransicionEscena>();
+            if (transicion != null)
+            {
+                transicion.IniciarTransicion(nombreDeEscena);
+                return; // ¡Esto es vital!
+            }
+            else
+            {
+                SceneManager.LoadScene(nombreDeEscena); // fallback
+            }
         }
         else
         {
             Debug.Log("Esta puerta requiere que deposites el cristal y que el diálogo termine.");
         }
+
     }
+
 }

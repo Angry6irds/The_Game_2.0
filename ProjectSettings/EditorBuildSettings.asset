@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Jose Luis/Scenes/Nivel_1/Nivel_1_fase_1 Bake.unity
     guid: f57a7dcf101819c45a754bba7c55b55f
+  - enabled: 1
+    path: Assets/Jose Luis/Scenes/Menu/Video_intro.unity
+    guid: 74df36ff4cadb5240a7607e209265c1e
   m_configObjects: {}

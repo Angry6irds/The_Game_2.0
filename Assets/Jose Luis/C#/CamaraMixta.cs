@@ -15,7 +15,7 @@ public class CamaraMixta : MonoBehaviour
 
     private bool enPrimeraPersona = false;
 
-    void Update()
+    void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
