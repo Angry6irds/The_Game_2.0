@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -20,15 +20,15 @@ public class DialogoPopup : MonoBehaviour
 
     private Coroutine mostrandoDialogo;
 
-    public void MostrarDialogos(List<DialogoConAutor> lineas)
+    public void MostrarDialogos(List<DialogoConAutor> lineas, GameObject colisionadorABorrar = null)
     {
         if (mostrandoDialogo != null)
             StopCoroutine(mostrandoDialogo);
 
-        mostrandoDialogo = StartCoroutine(MostrarSecuencia(lineas));
+        mostrandoDialogo = StartCoroutine(MostrarSecuencia(lineas, colisionadorABorrar));
     }
 
-    private IEnumerator MostrarSecuencia(List<DialogoConAutor> lineas)
+    private IEnumerator MostrarSecuencia(List<DialogoConAutor> lineas, GameObject colisionadorABorrar)
     {
         panelDialogo.SetActive(true);
 
@@ -43,6 +43,12 @@ public class DialogoPopup : MonoBehaviour
 
         panelDialogo.SetActive(false);
         if (imagenDoctora != null) imagenDoctora.SetActive(false);
+
+        // 🧱 Desbloquear el paso si se asignó un colisionador
+        if (colisionadorABorrar != null)
+        {
+            Destroy(colisionadorABorrar);
+        }
     }
 
     private IEnumerator MostrarTextoGradualmente(string texto)
