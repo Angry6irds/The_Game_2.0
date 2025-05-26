@@ -49,7 +49,6 @@ Material:
     - _BottomColor: {r: 290.63724, g: 1.3709337, b: 30.902098, a: 1}
     - _Topcolor: {r: 29.50884, g: 11.086552, b: 5.7068977, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1
 --- !u!114 &8144260749252440032
 MonoBehaviour:
   m_ObjectHideFlags: 11

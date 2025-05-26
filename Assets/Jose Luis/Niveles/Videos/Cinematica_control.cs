@@ -35,8 +35,8 @@ public class CinematicaControl : MonoBehaviour
 
         yield return StartCoroutine(Fade(0));
 
-        jugadorDialogo.ActivarDialogos(doctora);
-        while (jugadorDialogo.EstaMostrandoDialogo)
+        jugadorDialogo.ActivarDialogos(doctora, null);
+        while (jugadorDialogo.dialogoUI.panelDialogo.activeSelf)
             yield return null;
 
         yield return StartCoroutine(Fade(1));
@@ -46,8 +46,8 @@ public class CinematicaControl : MonoBehaviour
 
         yield return StartCoroutine(Fade(0));
 
-        jugadorDialogo.ActivarDialogos(jugador);
-        while (jugadorDialogo.EstaMostrandoDialogo)
+        jugadorDialogo.ActivarDialogos(jugador, null);
+        while (jugadorDialogo.dialogoUI.panelDialogo.activeSelf)
             yield return null;
 
         CinematicaTerminada = true;

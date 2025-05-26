@@ -1,4 +1,4 @@
-using UnityEngine;
+Ôªøusing UnityEngine;
 
 public class CamaraMixta : MonoBehaviour
 {
@@ -6,36 +6,54 @@ public class CamaraMixta : MonoBehaviour
     [SerializeField] private Transform jugador;
     [SerializeField] private Transform vistaPrimeraPersona;
 
-    [Header("ConfiguraciÛn tercera persona")]
+    [Header("Configuraci√≥n tercera persona")]
     [SerializeField] private Vector3 offsetTerceraPersona = new Vector3(0, 2, -4);
     [SerializeField] private Vector3 rotacionTerceraPersona = new Vector3(10, 0, 0);
 
-    [Header("TransiciÛn")]
+    [Header("Transici√≥n")]
     [SerializeField] private float suavizado = 5f;
 
-    private bool enPrimeraPersona = false;
+    [Header("Primera Persona")]
+    public bool enPrimeraPersona = false;
+    private float rotacionX = 0f;
+    private float rotacionY = 0f;
+    public float sensibilidadMouse = 2f;
+    public bool EnPrimeraPersona => enPrimeraPersona;
+    private bool primerCambioAPrimera = true;
 
     void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             enPrimeraPersona = !enPrimeraPersona;
+            primerCambioAPrimera = enPrimeraPersona;
         }
 
         if (enPrimeraPersona)
         {
-            // Primera persona: posiciÛn y rotaciÛn exacta
+            if (primerCambioAPrimera)
+            {
+                // Alineamos la c√°mara con el jugador al entrar en primera persona
+                rotacionX = jugador.eulerAngles.y - 90f; // Porque tu personaje mira al eje X
+                rotacionY = 0f;
+                primerCambioAPrimera = false;
+            }
+
+            rotacionX += Input.GetAxis("Mouse X") * sensibilidadMouse;
+            rotacionY -= Input.GetAxis("Mouse Y") * sensibilidadMouse;
+            rotacionY = Mathf.Clamp(rotacionY, -80f, 80f);
+
+            Quaternion rotacionFinal = Quaternion.Euler(rotacionY, rotacionX, 0);
             transform.position = Vector3.Lerp(transform.position, vistaPrimeraPersona.position, suavizado * Time.deltaTime);
-            transform.rotation = Quaternion.Lerp(transform.rotation, vistaPrimeraPersona.rotation, suavizado * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotacionFinal, suavizado * Time.deltaTime);
         }
         else
         {
-            // Tercera persona: sigue al jugador desde un offset global (NO hijo)
             Vector3 destino = jugador.position + offsetTerceraPersona;
             transform.position = Vector3.Lerp(transform.position, destino, suavizado * Time.deltaTime);
-
             Quaternion rotacion = Quaternion.Euler(rotacionTerceraPersona);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotacion, suavizado * Time.deltaTime);
+            // No tocar rotaci√≥n del jugador aqu√≠
         }
     }
 }

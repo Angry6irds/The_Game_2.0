@@ -62,4 +62,3 @@ Material:
     - _BottomColor: {r: 1, g: 1, b: 1, a: 1}
     - _Topcolor: {r: 16.948376, g: 4.077203, b: 5.516595, a: 1}
   m_BuildTextureStacks: []
-  m_AllowLocking: 1

@@ -43,7 +43,7 @@ public class MusicaPorNivel : MonoBehaviour
         {
             CambiarMusica(musicaNivel2);
         }
-        else if (nombre == "nivel_3_fase_1")
+        else if (nombre == "Nivel_3_fase_1")
         {
             CambiarMusica(musicaNivel3);
         }
