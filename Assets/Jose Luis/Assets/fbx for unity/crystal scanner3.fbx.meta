@@ -3,7 +3,137 @@ guid: 724298e20cfde7d46b873a535e4ed7ed
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: base
+    second: {fileID: 2100000, guid: 99463219303fe944d96a9b14f69c5ec2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cilindros
+    second: {fileID: 2100000, guid: 5810a61cc9c117549af2084673d664a4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coso trasero1
+    second: {fileID: 2100000, guid: 5b17d48364bfb2747b0e8ba49761bee4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: coso trasero3
+    second: {fileID: 2100000, guid: 4214ae76aa6b504469e430afe6545563, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cosotrasero 2
+    second: {fileID: 2100000, guid: be497dd9b38a19f4c9315dabb25f086d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: display
+    second: {fileID: 2100000, guid: 0eec8e7f00121ae4eab83772d81e6d42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: manguera
+    second: {fileID: 2100000, guid: 5d199acb5a0bbad4592ed7a5fb6165b7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pantalla
+    second: {fileID: 2100000, guid: c049decd23ebdf8428d54ab59d5272d8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: teclado
+    second: {fileID: 2100000, guid: 5359f5750bd1d3e418de0fc740fd58a8, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_base_Albedo
+    second: {fileID: 2800000, guid: b498c329de9b10a4a99e198c2f37cb6a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_base_Normal
+    second: {fileID: 2800000, guid: c13038b523660664f8e08977604217be, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_cilindros_Albedo
+    second: {fileID: 2800000, guid: 27b9713f217a34d4ab9b3153de4bcef4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_cilindros_Normal
+    second: {fileID: 2800000, guid: 0808842c512103e45ad405ce6c81ad91, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_coso trasero1_Albedo
+    second: {fileID: 2800000, guid: eaeec767048a2aa448c0e86ebfbac67d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_coso trasero1_Normal
+    second: {fileID: 2800000, guid: 3b6dc27cbdf028d438753b5bc1b84f96, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_coso trasero3_Albedo
+    second: {fileID: 2800000, guid: 3886ff35195ca244bb3cec90ff4c0557, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_coso trasero3_Normal
+    second: {fileID: 2800000, guid: b6029a9f3d59cf346be7c8b947fa67b5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_cosotrasero 2_Albedo
+    second: {fileID: 2800000, guid: f1d1ccf92f9ecad45913565d0cbcbe25, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_cosotrasero 2_Normal
+    second: {fileID: 2800000, guid: b10bf5033a600c242ae71552c95c3791, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_manguera_Albedo
+    second: {fileID: 2800000, guid: 1a975740fb6349247959930f6b63cd8a, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_manguera_Normal
+    second: {fileID: 2800000, guid: 375456a2fae41264eb634747cfe207a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_pantalla_Albedo
+    second: {fileID: 2800000, guid: bd99207bd1299b74ba2529fce9931411, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_pantalla_Emit
+    second: {fileID: 2800000, guid: aa0b5bb643ec9214593b24b5ec95521b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_pantalla_Normal
+    second: {fileID: 2800000, guid: d5e4d82c9c8aa64449ac2a84cb29c5f7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_teclado_Albedo
+    second: {fileID: 2800000, guid: ab196354699f8ec4597b1f547d62ace0, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: crystal scanner2_teclado_Normal
+    second: {fileID: 2800000, guid: f18c0c60db810f3438d5f2e7af76cede, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
