@@ -1,0 +1,279 @@
+fileFormatVersion: 2
+guid: 407b34f8dd0c1f44f94c18cae2e6c557
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cosointerior
+    second: {fileID: 2100000, guid: 929b5cc925abc4049a56dc8d917236d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina
+    second: {fileID: 2100000, guid: 4e02c4b0b9a5d8b4aafddb5daf89ea82, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cristal
+    second: {fileID: 2100000, guid: 51c774ed96e8fbd4fb206188d93164c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: maquina
+    second: {fileID: 2100000, guid: 39e544cdbc40b684788276b7385b8f58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: pantalla
+    second: {fileID: 2100000, guid: b4973652dcd50004b808c30b4e147d15, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_Alpha
+    second: {fileID: 2800000, guid: 713b5a1e6e9f40241a14296676d2788e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_BaseColor
+    second: {fileID: 2800000, guid: 41a7b05c0a5b0584d9e2b8adda327e7e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_Emission
+    second: {fileID: 2800000, guid: fcf75a2b7ccde6649ab10368eb8a0c98, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_Metallic
+    second: {fileID: 2800000, guid: b00c5e89e67434e43bc19b626c43bcb9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_Normal
+    second: {fileID: 2800000, guid: d40a83ec07535c347934cdedf1a2070e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cosointerior_Roughness
+    second: {fileID: 2800000, guid: d7b7a4ce1ee89f94d86f61132c3b9306, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_Alpha
+    second: {fileID: 2800000, guid: 008dd3403e39a204bad85fccdaa385eb, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_BaseColor
+    second: {fileID: 2800000, guid: 696dfced684ab6f47a440533106a1712, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_Emission
+    second: {fileID: 2800000, guid: 70f5be407f3484b4b98cb1cf57018004, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_Metallic
+    second: {fileID: 2800000, guid: 0efb7867b2888a64292fc7fd320793d4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_Normal
+    second: {fileID: 2800000, guid: e753b30be7f599940a957ce9410d7d11, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cososmaquina_Roughness
+    second: {fileID: 2800000, guid: 2e0e396a75b0e8a42abd6a38fd1a1094, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_Alpha
+    second: {fileID: 2800000, guid: 33d8371a376511540aa47516f82939af, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_BaseColor
+    second: {fileID: 2800000, guid: 7912e1f1a683eaa4eb649a37fc3fe5a7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_Emission
+    second: {fileID: 2800000, guid: 7cdecac5e520802429ee625dca721e69, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_Metallic
+    second: {fileID: 2800000, guid: 74fd2c072f1366b4285502d4b38098c9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_Normal
+    second: {fileID: 2800000, guid: d758a1fb804d69943bff1a9c3cf70dfd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: cristal_Roughness
+    second: {fileID: 2800000, guid: b83f6057d64006942b0662d9dcd66f2b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_Alpha
+    second: {fileID: 2800000, guid: 35c7b6f5409b1db4db719e23b49b0967, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_BaseColor
+    second: {fileID: 2800000, guid: d0baba69ed0ca1345aa733fc71173b83, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_Emission
+    second: {fileID: 2800000, guid: 04a4e2b01a5045a47877184fa6a1499d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_Metallic
+    second: {fileID: 2800000, guid: ff4f842e17057d24082d6dab5231bc18, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_Normal
+    second: {fileID: 2800000, guid: c68e4ed5e1897df4fbb6e22cf2271ce5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: maquina_Roughness
+    second: {fileID: 2800000, guid: a1d79f835dd4c68499f702b4d874e247, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pantalla_Alpha
+    second: {fileID: 2800000, guid: a891ad52ae75f3e42a6b9ac17f67aa1f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pantalla_Emission
+    second: {fileID: 2800000, guid: 30de7175750e6774baa59aff7f70b30b, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pantalla_Metallic
+    second: {fileID: 2800000, guid: 91544b050ce3c0a49b3c84a712410e16, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pantalla_Normal
+    second: {fileID: 2800000, guid: 726059232542f0e44b07ee6f6ed398ab, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pantalla_Roughness
+    second: {fileID: 2800000, guid: ed335a495fe8cab43b1426c6256e248e, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
