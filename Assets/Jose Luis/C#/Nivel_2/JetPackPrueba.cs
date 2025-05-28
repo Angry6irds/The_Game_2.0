@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,6 +26,16 @@ public class JetPackPrueba : MonoBehaviour
     private float combustibleActual;
     private bool puedeVolar = false;
     private Vector3 direccionVertical;
+    [Header("Tutorial UI")]
+    [SerializeField] private GameObject panelTutorial;
+    [SerializeField] private TextMeshProUGUI textoTutorial;
+    [TextArea(3, 5)]
+    [SerializeField] private string mensajeTutorial;
+    [SerializeField] private List<GameObject> imagenesTutorial;
+    [SerializeField] private float tiempoEntreImagenes = 1.2f;
+
+    private bool tutorialActivo = false;
+    private bool tutorialListo = false;
 
     void Update()
     {
@@ -32,8 +43,12 @@ public class JetPackPrueba : MonoBehaviour
         {
             IntentarRecoger();
         }
+        if (tutorialActivo && tutorialListo && Input.GetKeyDown(KeyCode.E))
+        {
+            CerrarTutorial();
+        }
 
-        if (jetpackRecogido && puedeVolar)
+        if (jetpackRecogido && puedeVolar && !tutorialActivo)
         {
             ControlarVuelo();
         }
@@ -63,12 +78,87 @@ public class JetPackPrueba : MonoBehaviour
                     if (c != null) c.enabled = false;
 
                     Debug.Log("Jetpack recogido.");
+                    Player_Standar movimiento = jugador.GetComponent<Player_Standar>();
+                    if (movimiento != null)
+                        movimiento.puedeMoverse = false;
+
+                    StartCoroutine(MostrarTutorial());
                     return;
                 }
             }
         }
 
         Debug.Log("No hay jugador cerca para recoger el jetpack.");
+    }
+
+    private IEnumerator MostrarTutorial()
+    {
+        panelTutorial.SetActive(true);
+
+        if (textoTutorial != null)
+            yield return StartCoroutine(EscribirTextoGradualmente(mensajeTutorial));
+
+        foreach (GameObject img in imagenesTutorial)
+        {
+            if (img != null)
+            {
+                CanvasGroup cg = img.GetComponent<CanvasGroup>();
+                if (cg != null)
+                {
+                    img.SetActive(true);
+                    yield return StartCoroutine(FadeInCanvasGroup(cg, 0.5f));
+                }
+                else
+                {
+                    img.SetActive(true);
+                }
+
+                yield return new WaitForSeconds(tiempoEntreImagenes);
+            }
+        }
+
+        tutorialActivo = true;
+        tutorialListo = true;
+    }
+
+    private void CerrarTutorial()
+    {
+        panelTutorial.SetActive(false);
+
+        if (jugador != null)
+        {
+            Player_Standar movimiento = jugador.GetComponent<Player_Standar>();
+            if (movimiento != null)
+                movimiento.puedeMoverse = true;
+        }
+
+        tutorialActivo = false;
+        tutorialListo = false;
+    }
+
+    private IEnumerator EscribirTextoGradualmente(string texto)
+    {
+        textoTutorial.text = "";
+        foreach (char letra in texto)
+        {
+            textoTutorial.text += letra;
+            yield return new WaitForSeconds(0.03f);
+        }
+    }
+
+    private IEnumerator FadeInCanvasGroup(CanvasGroup cg, float duracion)
+    {
+        float tiempo = 0f;
+        cg.alpha = 0f;
+
+        while (tiempo < duracion)
+        {
+            tiempo += Time.deltaTime;
+            cg.alpha = Mathf.Clamp01(tiempo / duracion);
+            yield return null;
+        }
+
+        cg.alpha = 1f;
     }
 
     void ControlarVuelo()

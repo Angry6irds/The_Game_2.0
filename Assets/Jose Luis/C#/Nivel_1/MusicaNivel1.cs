@@ -10,7 +10,7 @@ public class MusicaPorNivel : MonoBehaviour
     public AudioClip musicaNivel2;
     public AudioClip musicaNivel3;
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     void Awake()
     {
@@ -43,9 +43,13 @@ public class MusicaPorNivel : MonoBehaviour
         {
             CambiarMusica(musicaNivel2);
         }
-        else if (nombre == "Nivel_3_fase_1")
+        else if (nombre == "nivel_3_fase_1")
         {
             CambiarMusica(musicaNivel3);
+        }
+        else 
+        {
+            return;
         }
     }
 
