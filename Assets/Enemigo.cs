@@ -26,20 +26,15 @@ public class Enemigo : MonoBehaviour
     [Header("Componentes")]
     [SerializeField] private NavMeshAgent agente;
 
-    // Control para evitar ataques cada frame
     private bool puedeAtacar = true;
 
     void Start()
     {
-        // Buscar al jugador y guardar la posicion inicial
-        target = GameObject.Find("Jugador");
+        target = GameObject.Find("Player_Standar");
         posicionInicial = transform.position;
-
-        // Obtener el agente de navegacion
         agente = GetComponent<NavMeshAgent>();
-
-        // Asignar velocidad inicial
         agente.speed = velocidadCaminata;
+        agente.angularSpeed = 720f;
     }
 
     void Update()
@@ -50,46 +45,47 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    // Metodo principal que decide que hacer segun la distancia
     private void ComportamientoEnemigo()
     {
+        if (target.CompareTag("Invisible")) return;
         float distanciaJugador = Vector3.Distance(transform.position, target.transform.position);
         float distanciaInicio = Vector3.Distance(transform.position, posicionInicial);
 
-        if (distanciaJugador <= rangoPersecucion && distanciaJugador > distanciaMinima)
+        if (distanciaJugador <= rangoPersecucion)
         {
-            // El jugador esta en rango para perseguirlo
-            Debug.Log("Interaccion detectada: persiguiendo jugador");
-            agente.speed = velocidadCarrera;
-            agente.SetDestination(target.transform.position);
-        }
-        else if (distanciaJugador <= distanciaMinima)
-        {
-            // El enemigo esta muy cerca del jugador y puede atacar
-            agente.ResetPath(); // detener movimiento
-            transform.LookAt(target.transform); // mirar al jugador
-
-            if (puedeAtacar)
+            if (distanciaJugador > distanciaMinima)
             {
-                StartCoroutine(AtaqueJugador());
+                // Perseguir jugador
+                agente.speed = velocidadCarrera;
+                agente.SetDestination(target.transform.position);
+            }
+            else
+            {
+                // Detenerse y atacar
+                agente.ResetPath();
+                Vector3 direccion = (target.transform.position - transform.position).normalized;
+                Quaternion rotacionDeseada = Quaternion.LookRotation(direccion);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, rotacionDeseada, 720 * Time.deltaTime);
+
+                if (puedeAtacar)
+                {
+                    StartCoroutine(AtaqueJugador());
+                }
             }
         }
         else if (distanciaJugador > rangoVision && distanciaInicio > rangoPersecucion)
         {
-            // El jugador se alejo mucho, regresar a la base
-            Debug.Log("Jugador fuera de rango, regresando a la base");
+            // Regresar a base
             agente.speed = velocidadCaminata;
             agente.SetDestination(posicionInicial);
         }
         else
         {
-            // Patrullaje o movimiento aleatorio
-            Debug.Log("Modo patrulla o reposo");
+            // Patrullaje
             MovimientoAleatorio();
         }
     }
 
-    // Simula movimiento aleatorio del enemigo
     private void MovimientoAleatorio()
     {
         tiempoEspera += Time.deltaTime;
@@ -107,16 +103,24 @@ public class Enemigo : MonoBehaviour
         }
     }
 
-    // Corrutina que simula ataque con tiempo de espera
     private IEnumerator AtaqueJugador()
     {
         puedeAtacar = false;
         Debug.Log("¡El enemigo ataca al jugador!");
-
-        // Aqui puedes colocar daño al jugador o animacion
-
         yield return new WaitForSeconds(tiempoEntreAtaques);
-
         puedeAtacar = true;
+    }
+
+    // Visualiza los rangos en el editor
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, rangoVision); // Rango de vision
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, rangoPersecucion); // Rango de persecucion
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireSphere(transform.position, distanciaMinima); // Rango de ataque
     }
 }

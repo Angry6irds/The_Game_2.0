@@ -5,13 +5,13 @@ using UnityEngine;
 public class Player_Standar : MonoBehaviour
 {
     [Header("Movimiento del personaje provisional")]
-    [SerializeField] private float velCaminata;
+    [SerializeField] public float velCaminata;
     [SerializeField] private float velEscalera;
     [SerializeField] private float Rotacion;
     [SerializeField] private Animator animador;
     [SerializeField] private float horizontal, vertical;
     [SerializeField] private float gravedad = 9.8f;
-    [SerializeField] private float velActual;
+    [SerializeField] public float velActual;
     [SerializeField] private Vector3 velocidad;
     [SerializeField] private CharacterController controller;
     //[SerializeField] private Rigidbody rb;
