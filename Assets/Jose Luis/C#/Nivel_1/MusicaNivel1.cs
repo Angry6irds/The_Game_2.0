@@ -47,7 +47,11 @@ public class MusicaPorNivel : MonoBehaviour
         {
             CambiarMusica(musicaNivel3);
         }
-        else 
+        else if (nombre == "menu")
+        {
+            audioSource.Stop();  
+        }
+        else
         {
             return;
         }
@@ -57,7 +61,8 @@ public class MusicaPorNivel : MonoBehaviour
     {
         if (nuevaMusica == null) return;
 
-        if (audioSource.clip != nuevaMusica)
+        
+        if (audioSource.clip != nuevaMusica || !audioSource.isPlaying)
         {
             audioSource.clip = nuevaMusica;
             audioSource.Play();

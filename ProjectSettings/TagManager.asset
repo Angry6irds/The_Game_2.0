@@ -8,6 +8,7 @@ TagManager:
   - Objeto_Traspasable
   - CristalBlanco
   - Objeto_Teletransportador
+  - Objeto_Movible
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - raycasts
   - 
   - 
   - 
