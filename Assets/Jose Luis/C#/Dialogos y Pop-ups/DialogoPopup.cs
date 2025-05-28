@@ -17,18 +17,20 @@ public class DialogoPopup : MonoBehaviour
     public TextMeshProUGUI textoDialogo;
     public GameObject imagenDoctora;
     public float tiempoEntreLineas = 3f;
+    [Header("Panel de comandos (opcional)")]
+    public GameObject panelComandos;
 
     private Coroutine mostrandoDialogo;
 
-    public void MostrarDialogos(List<DialogoConAutor> lineas, GameObject colisionadorABorrar = null)
+    public void MostrarDialogos(List<DialogoConAutor> lineas, GameObject colisionadorABorrar = null, ZonaDialogo zonaDialogo = null)
     {
         if (mostrandoDialogo != null)
             StopCoroutine(mostrandoDialogo);
 
-        mostrandoDialogo = StartCoroutine(MostrarSecuencia(lineas, colisionadorABorrar));
+        mostrandoDialogo = StartCoroutine(MostrarSecuencia(lineas, colisionadorABorrar, zonaDialogo));
     }
 
-    private IEnumerator MostrarSecuencia(List<DialogoConAutor> lineas, GameObject colisionadorABorrar)
+    private IEnumerator MostrarSecuencia(List<DialogoConAutor> lineas, GameObject colisionadorABorrar, ZonaDialogo zonaDialogo)
     {
         panelDialogo.SetActive(true);
 
@@ -44,11 +46,12 @@ public class DialogoPopup : MonoBehaviour
         panelDialogo.SetActive(false);
         if (imagenDoctora != null) imagenDoctora.SetActive(false);
 
-        // 🧱 Desbloquear el paso si se asignó un colisionador
         if (colisionadorABorrar != null)
-        {
             Destroy(colisionadorABorrar);
-        }
+
+        // ⚠️ Activar el panel de comandos desde aquí si es necesario
+        if (zonaDialogo != null && zonaDialogo.mostrarPanelComandos)
+            zonaDialogo.IniciarPanelComandos();
     }
 
     private IEnumerator MostrarTextoGradualmente(string texto)
