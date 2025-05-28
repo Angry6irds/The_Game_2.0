@@ -35,13 +35,13 @@ public class PruebaSaltar : MonoBehaviour
             }
         }
     }
-      void OnCollisionEnter(Collision collision)
+      /*void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Suelo") || collision.gameObject.CompareTag("Escalera"))
         {
             saltosDisponibles = dobleSaltoHabilitado ? 2 : 1;
         }
-    }
+    }*/
      
     public void ActivarDobleSalto()
     {
